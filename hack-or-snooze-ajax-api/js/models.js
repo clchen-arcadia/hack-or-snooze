@@ -73,8 +73,17 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
-    // UNIMPLEMENTED: complete this function!
+  async addStory(currentUser, inputStoryObject) {
+    const {title, author, url} = inputStoryObject;
+    const {username, createdAt} = currentUser;
+    return new Story({
+      storyId: 123,
+      title,
+      author,
+      url,
+      username,
+      createdAt
+    })
   }
 }
 
