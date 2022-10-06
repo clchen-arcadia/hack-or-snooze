@@ -56,15 +56,17 @@ function putStoriesOnPage() {
  */
 $("#submit-story").on("submit", function (evt){
   evt.preventDefault();
-  getNewStoryFromUser(evt);
+  getNewStoryFromUser();
 })
 
-function getNewStoryFromUser() {
+async function getNewStoryFromUser() { //TODO: refactor
   const storyInputData = {
     title: $("#submit-title").val(),
     author: $("#submit-author").val(),
     url: $("#submit-url").val()
   }
-  addStory(storyInputData);
-  storyList.push // push the story to the current instance of the StoryList
+
+  let newStory = await storyList.addStory(currentUser, storyInputData);
+  storyList.getStories();
+  console.log("newStory", newStory);
 }

@@ -24,7 +24,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
+    // UNIMPLEMENTED: complete this function! //TODO:
     return "hostname.com";
   }
 }
