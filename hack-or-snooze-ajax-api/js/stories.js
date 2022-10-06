@@ -50,3 +50,21 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+/** Collects new Story data when user submits new story via the form,
+ * passes it into Story.addStory(). No parameters. Returns nothing.
+ */
+$("#submit-story").on("submit", function (evt){
+  evt.preventDefault();
+  getNewStoryFromUser(evt);
+})
+
+function getNewStoryFromUser() {
+  const storyInputData = {
+    title: $("#submit-title").val(),
+    author: $("#submit-author").val(),
+    url: $("#submit-url").val()
+  }
+  addStory(storyInputData);
+  storyList.push // push the story to the current instance of the StoryList
+}

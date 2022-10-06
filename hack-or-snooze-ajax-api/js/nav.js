@@ -39,7 +39,13 @@ function updateNavOnLogin() {
 
 function navShowSubmitForm(){
   console.debug("navShowSubmitForm");
-  $(".submit-new-story-container").show();
+  $submitStory.show();
 }
 
 $navSubmit.on("click", navShowSubmitForm);
+
+$closeNewStoryForm.on("click", hideStoryContainer)
+
+function hideStoryContainer() {
+  $submitStory.hide();
+}
