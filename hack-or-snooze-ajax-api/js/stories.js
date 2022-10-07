@@ -54,6 +54,7 @@ function putStoriesOnPage() {
 $("#submit-story").on("submit", function (evt){
   evt.preventDefault();
   getNewStoryFromUser();
+  $submitStory.hide();
 })
 
 /** Collects new Story data when user submits new story via the form,

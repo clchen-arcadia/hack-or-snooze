@@ -36,7 +36,8 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
-//TODO: Create docStrings for these functions
+
+/** Function shows the submit form on the DOM */
 function navShowSubmitForm(){
   console.debug("navShowSubmitForm");
   $submitStory.show();
@@ -45,7 +46,8 @@ function navShowSubmitForm(){
 $navSubmit.on("click", navShowSubmitForm);
 
 $closeNewStoryForm.on("click", hideStoryContainer)
-//TODO: move line 50 to add story function
+
+/**Function hides the submit form */
 function hideStoryContainer() {
   $submitStory.hide();
 }

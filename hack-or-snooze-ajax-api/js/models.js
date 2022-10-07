@@ -11,7 +11,6 @@ class Story {
   /** Make instance of Story from data object about story:
    *   - {title, author, url, username, storyId, createdAt}
    */
-
   constructor({ storyId, title, author, url, username, createdAt }) {
     this.storyId = storyId;
     this.title = title;
@@ -22,10 +21,9 @@ class Story {
   }
 
   /** Parses hostname out of URL and returns it. */
-
   getHostName() {
-    // UNIMPLEMENTED: complete this function! //TODO: Parse url to only get hostname
-    return this.url;
+    let url = new URL(this.url);
+    return url.hostname;
   }
 }
 
@@ -40,13 +38,12 @@ class StoryList {
   }
 
   /** Generate a new StoryList. It:
-   *
+
    *  - calls the API
    *  - builds an array of Story instances
    *  - makes a single StoryList instance out of that
    *  - returns the StoryList instance.
    */
-
   static async getStories() {
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
@@ -72,26 +69,18 @@ class StoryList {
    *
    * Returns the new Story instance
    */
+  async addStory(user, inputStoryObject) {
+    const { loginToken } = user;
+    const { title, author, url } = inputStoryObject;
 
-  //TODO: user is not necessarily currentUser. Use "user"
-  async addStory(currentUser, inputStoryObject) {
-    const {loginToken} = currentUser;
-    const {title, author, url} = inputStoryObject;
-  //TODO: change name to response
-    const postStoryRequest = await axios.post( `${BASE_URL}/stories`,
+    const response = await axios.post(`${BASE_URL}/stories`,
       {
-        //TODO: use shorthand, remove quotes
-        "token": loginToken,
-        "story": {
-          "author": author,
-          "title": title,
-          "url": url
-        }
-    });
+        token: loginToken,
+        story: { author, title, url }
+      });
 
     // The response object matches the constructor arguments to the Story class
-    return new Story(postStoryRequest.data.story);
-
+    return new Story(response.data.story);
   }
 }
 
@@ -105,15 +94,14 @@ class User {
    *   - {username, name, createdAt, favorites[], ownStories[]}
    *   - token
    */
-
   constructor({
-                username,
-                name,
-                createdAt,
-                favorites = [],
-                ownStories = []
-              },
-              token) {
+    username,
+    name,
+    createdAt,
+    favorites = [],
+    ownStories = []
+  },
+    token) {
     this.username = username;
     this.name = name;
     this.createdAt = createdAt;
@@ -132,7 +120,6 @@ class User {
    * - password: a new password
    * - name: the user's full name
    */
-
   static async signup(username, password, name) {
     const response = await axios({
       url: `${BASE_URL}/signup`,
@@ -159,7 +146,6 @@ class User {
    * - username: an existing user's username
    * - password: an existing user's password
    */
-
   static async login(username, password) {
     const response = await axios({
       url: `${BASE_URL}/login`,
@@ -184,7 +170,6 @@ class User {
   /** When we already have credentials (token & username) for a user,
    *   we can log them in automatically. This function does that.
    */
-
   static async loginViaStoredCredentials(token, username) {
     try {
       const response = await axios({
