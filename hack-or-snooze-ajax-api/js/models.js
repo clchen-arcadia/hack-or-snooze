@@ -201,40 +201,50 @@ class User {
    *
    * Returns a promise for the response from the backend.
    */
-  async addFavorite(storyToFav){
+  async addFavorite(storyToFav) {
     console.debug('addFavorite');
-    const response = await axios.post(
-      `${BASE_URL}/users/${this.username}/favorites/${storyToFav.storyId}`,
-      {
-        token: this.loginToken
-      });
 
-      this.favorites.push(storyToFav);
+    const response = await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${storyToFav.storyId}`,
+      method: "POST",
+      data: {
+        token: this.loginToken
+      }
+    });
 
     console.log(response);
 
     return response;
   }
 
- /** Function accepts Story instance.
-   * Sends API request to delete story from User's favorites.
-   *
-   * Returns a promise for the response from the backend.
-   */
-  async removeFavorite(storyToUnfav){
+  /** Function accepts Story instance.
+    * Sends API request to delete story from User's favorites.
+    *
+    * Returns a promise for the response from the backend.
+    */
+  async removeFavorite(storyToUnfav) {
     console.debug('removeFavorite');
-    const response = await axios.delete(
-      `${BASE_URL}/users/${this.username}/favorites/${storyToUnfav.storyId}`,
-      {
+
+    const response = await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${storyToUnfav.storyId}`,
+      method: "DELETE",
+      data: {
         token: this.loginToken
-      });
+      }
+    });
 
-      let removeStoryCallback = this.favorites.findIndex(story => story.storyId === storyToUnfav.storyId);
+    // PREV WAY OF DOING THIS, AXIOS A little esoteric. pref the axios() general call
+    // const response = await axios.delete(
+    //   `${BASE_URL}/users/${this.username}/favorites/${storyToUnfav.storyId}`,
+    //   { data: {
+    //     token: this.loginToken
+    //   }});
 
-      console.log('removeStoryCallback: ', removeStoryCallback);
+    console.log('before splice favorites', this.favorites);
+    let getStoryIndex = this.favorites.findIndex(story => story.storyId === storyToUnfav.storyId);
+    this.favorites.splice(getStoryIndex, 1);
+    console.log('after splice favorites', this.favorites);
 
-    // console.log(response);
-
-    // return response;
+    return response;
   }
 }

@@ -41,7 +41,18 @@ Via: 1.1 vegur
 
 <!-- login info below -->
 username: clchen-arcadia
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
+token:
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDk4MDk3fQ.cwihzJx8l70ptpfc0e88tycs_puxOb3cArRDwKIl7To
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDk4MDk3fQ.cwihzJx8l70ptpfc0e88tycs_puxOb3cArRDwKIl7To
+
+chris chen new
+chrischennew
+foo
 <!-- login info above -->
 
 <!-- successful POST for create new story below -->
@@ -81,6 +92,12 @@ https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
 DELETE
 https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
 
-https://hack-or-snooze-v3.herokuapp.com/user/clchen-arcadia/favorites/c2f4b1f4-994f-4385-a256-516204b56ffe?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
+https://hack-or-snooze-v3.herokuapp.com/user/clchen-arcadia/favorites/c2f4b1f4-994f-4385-a256-516204b56ffe
+
+
+?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
 
 https://hack-or-snooze-v3.herokuapp.com/user/clchen-arcadia/favorites/c2f4b1f4-994f-4385-a256-516204b56ffe?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
+
+
+https://hack-or-snooze-v3.herokuapp.com/users/clchen-arcadia/favorites/04f4e2fa-cfc2-4a9d-9fde-8d5934bbe34e
