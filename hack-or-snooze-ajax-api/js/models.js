@@ -24,8 +24,8 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function! //TODO:
-    return "hostname.com";
+    // UNIMPLEMENTED: complete this function! //TODO: Parse url to only get hostname
+    return this.url;
   }
 }
 
@@ -73,12 +73,14 @@ class StoryList {
    * Returns the new Story instance
    */
 
+  //TODO: user is not necessarily currentUser. Use "user"
   async addStory(currentUser, inputStoryObject) {
-    const {username, createdAt, loginToken} = currentUser;
+    const {loginToken} = currentUser;
     const {title, author, url} = inputStoryObject;
-
+  //TODO: change name to response
     const postStoryRequest = await axios.post( `${BASE_URL}/stories`,
       {
+        //TODO: use shorthand, remove quotes
         "token": loginToken,
         "story": {
           "author": author,
@@ -87,17 +89,9 @@ class StoryList {
         }
     });
 
-    const newStoryId = postStoryRequest.data.story.storyId;
-    const storyCreatedAt = postStoryRequest.data.story.createdAt;
+    // The response object matches the constructor arguments to the Story class
+    return new Story(postStoryRequest.data.story);
 
-    return new Story({
-      storyId: newStoryId,
-      title,
-      author,
-      url,
-      username,
-      createdAt: storyCreatedAt
-    })
   }
 }
 

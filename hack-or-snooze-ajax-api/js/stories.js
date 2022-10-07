@@ -51,15 +51,16 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
-/** Collects new Story data when user submits new story via the form,
- * passes it into Story.addStory(). No parameters. Returns nothing.
- */
 $("#submit-story").on("submit", function (evt){
   evt.preventDefault();
   getNewStoryFromUser();
 })
 
-async function getNewStoryFromUser() { //TODO: refactor
+/** Collects new Story data when user submits new story via the form,
+ * passes it into Story.addStory(). No parameters. Returns nothing.
+ */
+
+async function getNewStoryFromUser() {
   const storyInputData = {
     title: $("#submit-title").val(),
     author: $("#submit-author").val(),
@@ -67,6 +68,6 @@ async function getNewStoryFromUser() { //TODO: refactor
   }
 
   let newStory = await storyList.addStory(currentUser, storyInputData);
-  storyList.getStories();
-  console.log("newStory", newStory);
+  const $story = generateStoryMarkup(newStory);
+  $allStoriesList.prepend($story);
 }
