@@ -209,6 +209,8 @@ class User {
         token: this.loginToken
       });
 
+      this.favorites.push(storyToFav);
+
     console.log(response);
 
     return response;
@@ -227,8 +229,12 @@ class User {
         token: this.loginToken
       });
 
-    console.log(response);
+      let removeStoryCallback = this.favorites.findIndex(story => story.storyId === storyToUnfav.storyId);
 
-    return response;
+      console.log('removeStoryCallback: ', removeStoryCallback);
+
+    // console.log(response);
+
+    // return response;
   }
 }
