@@ -195,4 +195,40 @@ class User {
       return null;
     }
   }
+
+  /** Function accepts Story instance.
+   * Sends API request to add story to User's favorites.
+   *
+   * Returns a promise for the response from the backend.
+   */
+  async addFavorite(storyToFav){
+    console.debug('addFavorite');
+    const response = await axios.post(
+      `${BASE_URL}/users/${this.username}/favorites/${storyToFav.storyId}`,
+      {
+        token: this.loginToken
+      });
+
+    console.log(response);
+
+    return response;
+  }
+
+ /** Function accepts Story instance.
+   * Sends API request to delete story from User's favorites.
+   *
+   * Returns a promise for the response from the backend.
+   */
+  async removeFavorite(storyToUnfav){
+    console.debug('removeFavorite');
+    const response = await axios.delete(
+      `${BASE_URL}/users/${this.username}/favorites/${storyToUnfav.storyId}`,
+      {
+        token: this.loginToken
+      });
+
+    console.log(response);
+
+    return response;
+  }
 }

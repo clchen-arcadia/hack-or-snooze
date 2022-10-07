@@ -64,3 +64,23 @@ Via: 1.1 vegur
 
 {"story":{"author":"Elie Schoppik","createdAt":"2022-10-06T17:31:25.301Z","storyId":"c2f4b1f4-994f-4385-a256-516204b56ffe","title":"Four Tips for Moving Faster as a Developer","updatedAt":"2022-10-06T17:31:25.301Z","url":"https://www.rithmschool.com/blog/developer-productivity","username":"clchen-arcadia"}}%
 <!-- successful POST for create new story above -->
+
+storyId:
+
+c2f4b1f4-994f-4385-a256-516204b56ffe
+
+useful test line:
+
+currentUser.addFavorite(newStory);
+currentUser.removeFavorite(newStory);
+
+
+
+POST
+https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+DELETE
+https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+
+https://hack-or-snooze-v3.herokuapp.com/user/clchen-arcadia/favorites/c2f4b1f4-994f-4385-a256-516204b56ffe?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
+
+https://hack-or-snooze-v3.herokuapp.com/user/clchen-arcadia/favorites/c2f4b1f4-994f-4385-a256-516204b56ffe?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNsY2hlbi1hcmNhZGlhIiwiaWF0IjoxNjY1MDc3MDMyfQ.peT4qGxySF3B1V6uAY0QlTBfQZ9meqBi-COk9zu3sTk
