@@ -2,6 +2,9 @@
 
 // global to hold the User instance of the currently-logged-in user
 let currentUser;
+let $favoriteStar = $(".star");
+
+
 
 /******************************************************************************
  * User login/signup/login
@@ -113,4 +116,15 @@ function updateUIOnUserLogin() {
   $allStoriesList.show();
 
   updateNavOnLogin();
+}
+
+$allStoriesList.on("click", "i", updateFavorites);
+
+function toggleStar(evt) {
+  $(evt.target).toggleClass("bi-star-fill");
+}
+
+function updateFavories(evt) {
+  toggleStar(evt);
+  if (evt.target)
 }
