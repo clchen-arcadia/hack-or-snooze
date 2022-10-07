@@ -18,11 +18,16 @@ async function getAndShowStoriesOnStart() {
  *
  * Returns the markup for the story.
  */
+let starFavStatus = "bi-star";
 
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
-  const isFavorite = currentUser.favorites.some(storyFav => storyFav.storyId === story.storyId);
-  const starFavStatus = (isFavorite) ? 'bi-star-fill' : 'bi-star'
+  if (currentUser === undefined) {
+    $(".star").empty();
+  } else {
+    const isFavorite = currentUser.favorites.some(storyFav => storyFav.storyId === story.storyId);
+    starFavStatus = (isFavorite) ? 'bi-star-fill' : 'bi-star';
+  }
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">

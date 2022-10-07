@@ -112,13 +112,13 @@ function saveUserCredentialsInLocalStorage() {
 
 function updateUIOnUserLogin() {
   console.debug("updateUIOnUserLogin");
-
-  $allStoriesList.show();
+  $allFavoritesList.hide();
 
   updateNavOnLogin();
 }
 
 $allStoriesList.on("click", "i", updateFavorites);
+$allFavoritesList.on("click", "i", updateFavorites);
 
 /**Toggle bi-star-filled class on event target */
 function toggleStar(evt) {
@@ -138,3 +138,22 @@ function updateFavorites(evt) {
     currentUser.addFavorite(storyList.stories.find(story => story.storyId === storyIdClicked));
   }
 }
+
+/** Puts Favorite Stories on Favorites Page */
+function putFavoritesOnPage() {
+  //console.debug("putFavoritesOnPage");
+
+  $allStoriesList.hide();
+  $allFavoritesList.empty();
+
+  // loop through favorites array of current user and generate
+  //story markup for each story
+  for (let favorite of currentUser.favorites) {
+    const $favoriteStory = generateStoryMarkup(favorite);
+    $allFavoritesList.append($favoriteStory);
+  }
+
+  $allFavoritesList.show();
+}
+
+$("#favorites-link").on("click", putFavoritesOnPage);
