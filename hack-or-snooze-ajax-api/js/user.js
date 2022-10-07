@@ -120,11 +120,21 @@ function updateUIOnUserLogin() {
 
 $allStoriesList.on("click", "i", updateFavorites);
 
+/**Toggle bi-star-filled class on event target */
 function toggleStar(evt) {
   $(evt.target).toggleClass("bi-star-fill");
+  $(evt.target).toggleClass("bi-star");
 }
 
-function updateFavories(evt) {
+/**updates "Favorite-status" of target story */
+function updateFavorites(evt) {
   toggleStar(evt);
-  if (evt.target)
+  const storyIdClicked = $(evt.target).parents("li").attr("id");
+  const favoriteStory = currentUser.favorites.find(story => story.storyId === storyIdClicked);
+  if(favoriteStory){
+    currentUser.removeFavorite(favoriteStory);
+  }
+  else{
+    currentUser.addFavorite(storyList.stories.find(story => story.storyId === storyIdClicked));
+  }
 }

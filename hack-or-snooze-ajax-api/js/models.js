@@ -212,7 +212,7 @@ class User {
       }
     });
 
-    console.log(response);
+    this.favorites.push(storyToFav);
 
     return response;
   }
@@ -240,10 +240,8 @@ class User {
     //     token: this.loginToken
     //   }});
 
-    console.log('before splice favorites', this.favorites);
     let getStoryIndex = this.favorites.findIndex(story => story.storyId === storyToUnfav.storyId);
     this.favorites.splice(getStoryIndex, 1);
-    console.log('after splice favorites', this.favorites);
 
     return response;
   }
