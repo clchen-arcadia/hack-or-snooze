@@ -34,18 +34,20 @@ function updateNavOnLogin() {
   $(".main-nav-links").show();
   $navLogin.hide();
   $navLogOut.show();
+  $navSubmit.show();
+  $navFavorites.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
 /** Function shows the submit form on the DOM */
-function navShowSubmitForm(){
+function navShowSubmitForm() {
   console.debug("navShowSubmitForm");
   $submitStory.show();
 }
 
 $navSubmit.on("click", navShowSubmitForm);
 
-$closeNewStoryForm.on("click", hideStoryContainer)
+$closeNewStoryForm.on("click", hideStoryContainer);
 
 /**Function hides the submit form */
 function hideStoryContainer() {

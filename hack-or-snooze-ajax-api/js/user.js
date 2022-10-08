@@ -110,10 +110,13 @@ function saveUserCredentialsInLocalStorage() {
  * - generate the user profile part of the page
  */
 
-function updateUIOnUserLogin() {
+async function updateUIOnUserLogin() {
   console.debug("updateUIOnUserLogin");
   $allFavoritesList.hide();
-
+  $loginForm.hide();
+  $signupForm.hide();
+  // $allStoriesList.show();
+  await getAndShowStoriesOnStart();
   updateNavOnLogin();
 }
 
@@ -131,10 +134,10 @@ function updateFavorites(evt) {
   toggleStar(evt);
   const storyIdClicked = $(evt.target).parents("li").attr("id");
   const favoriteStory = currentUser.favorites.find(story => story.storyId === storyIdClicked);
-  if(favoriteStory){
+  if (favoriteStory) {
     currentUser.removeFavorite(favoriteStory);
   }
-  else{
+  else {
     currentUser.addFavorite(storyList.stories.find(story => story.storyId === storyIdClicked));
   }
 }
