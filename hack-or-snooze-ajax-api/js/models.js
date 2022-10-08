@@ -214,7 +214,7 @@ class User {
 
     this.favorites.push(storyToFav);
 
-    return response;
+    return response; //TODO: don't return anything--dont need to
   }
 
   /** Function accepts Story instance.
@@ -240,9 +240,11 @@ class User {
     //     token: this.loginToken
     //   }});
 
-    let getStoryIndex = this.favorites.findIndex(story => story.storyId === storyToUnfav.storyId);
+    let getStoryIndex = this.favorites.findIndex(
+      story => story.storyId === storyToUnfav.storyId
+    );
     this.favorites.splice(getStoryIndex, 1);
 
-    return response;
+    return response; //TODO: don't return anything--don't need to
   }
 }

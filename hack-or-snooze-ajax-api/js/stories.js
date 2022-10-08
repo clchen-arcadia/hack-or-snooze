@@ -41,7 +41,7 @@ function generateStoryMarkup(story) {
  * in the local currentUser.favorites array of stories, and merely a bi-star if not.
  */
 function getStarHTML(story) {
-  if (currentUser) {
+  if (currentUser) { //TODO: make separate declaration for bool in line45! just for readability
     if (currentUser.favorites.some(storyFav => storyFav.storyId === story.storyId)) {
       // currentUser has this story favorited.
       return `<i class="bi bi-star-fill"></i>`;

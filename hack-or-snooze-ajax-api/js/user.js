@@ -119,7 +119,7 @@ async function updateUIOnUserLogin() {
   await getAndShowStoriesOnStart();
   updateNavOnLogin();
 }
-
+//Listeners for updateFavorites
 $allStoriesList.on("click", "i", updateFavorites);
 $allFavoritesList.on("click", "i", updateFavorites);
 
@@ -130,16 +130,19 @@ function toggleStar(evt) {
 }
 
 /**updates "Favorite-status" of target story */
-function updateFavorites(evt) {
-  toggleStar(evt);
-  const storyIdClicked = $(evt.target).parents("li").attr("id");
+function updateFavorites(evt) { //do data/API first, then UI last
+  toggleStar(evt); //TODO: what if API is down? move down to bottom of this function
+  const storyIdClicked = $(evt.target).parents("li").attr("id"); //can we use closest?
   const favoriteStory = currentUser.favorites.find(story => story.storyId === storyIdClicked);
+  //we're not await the asynchronous functions TODO: just add await at line 139 142
   if (favoriteStory) {
     currentUser.removeFavorite(favoriteStory);
   }
   else {
     currentUser.addFavorite(storyList.stories.find(story => story.storyId === storyIdClicked));
+    //TODO: try not to nested function call!
   }
+  console.log("Successfully updated!"); //this is a lie (without await)
 }
 
 /** Puts Favorite Stories on Favorites Page */
